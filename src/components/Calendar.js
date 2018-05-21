@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Calendar.css";
 import { CalendarBody, CalendarSection } from "./";
+import moment from "moment";
 
 /**
  * common parent that will serve as a unified place to distribute options to render the
@@ -8,12 +9,27 @@ import { CalendarBody, CalendarSection } from "./";
  * @extends Component
  */
 class Calendar extends Component {
+  _getSections({ startDate, endDate }) {
+    let sections = [];
+    let monthsToRender = endDate.diff(startDate, "months");
+
+    if (monthsToRender < 0) return sections;
+
+    for (let i = 0; i <= monthsToRender; i++) {
+      sections.push(<CalendarSection key={i} showGuidelines={i === 0} />);
+    }
+
+    return sections;
+  }
+
   render() {
+    let startDate = moment([2018, 4, 10]); // ~ May 10, 2018
+    let endDate = moment([2018, 6, 20]); // ~ July 20, 2018
+    let sections = this._getSections({ startDate, endDate });
+
     return (
       <div className="calendar">
-        <CalendarBody>
-          <CalendarSection showGuidelines={true} />
-        </CalendarBody>
+        <CalendarBody>{sections}</CalendarBody>
       </div>
     );
   }
