@@ -1,0 +1,4 @@
+.calendar-section__cells {
+  border: 1px solid blue;
+  display: flex;
+}

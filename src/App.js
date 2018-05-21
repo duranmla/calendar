@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { CalendarCell, CalendarBody, CalendarSection } from "./components";
+import {
+  CalendarCell,
+  CalendarBody,
+  CalendarSection,
+  CalendarSectionHeader,
+  CalendarSectionColumnGuidelines,
+  CalendarSectionCells
+} from "./components";
 
 class App extends Component {
   render() {
@@ -14,7 +21,9 @@ class App extends Component {
         <p className="App-intro">
           <CalendarBody>
             <CalendarSection>
-              <CalendarCell />
+              <CalendarSectionHeader />
+              <CalendarSectionColumnGuidelines />
+              <CalendarSectionCells />
             </CalendarSection>
           </CalendarBody>
         </p>
