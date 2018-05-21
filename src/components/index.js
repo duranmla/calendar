@@ -1,15 +1,17 @@
-import CalendarCell from "./CalendarCell";
+import Calendar from "./Calendar";
 import CalendarBody from "./CalendarBody";
+import CalendarCell from "./CalendarCell";
 import CalendarSection from "./CalendarSection";
-import CalendarSectionHeader from "./CalendarSectionHeader";
-import CalendarSectionColumnGuidelines from "./CalendarSectionColumnGuidelines";
 import CalendarSectionCells from "./CalendarSectionCells";
+import CalendarSectionColumnGuidelines from "./CalendarSectionColumnGuidelines";
+import CalendarSectionHeader from "./CalendarSectionHeader";
 
 export {
-  CalendarCell,
+  Calendar,
   CalendarBody,
+  CalendarCell,
   CalendarSection,
-  CalendarSectionHeader,
+  CalendarSectionCells,
   CalendarSectionColumnGuidelines,
-  CalendarSectionCells
+  CalendarSectionHeader
 };
