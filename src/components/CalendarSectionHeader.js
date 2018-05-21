@@ -10,7 +10,7 @@ class CalendarSectionHeader extends Component {
   render() {
     return (
       <div className="calendar-section__header">
-        <strong>May 2018</strong>
+        <strong>{this.props.label}</strong>
       </div>
     );
   }

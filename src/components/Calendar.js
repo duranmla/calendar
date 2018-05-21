@@ -15,8 +15,18 @@ class Calendar extends Component {
 
     if (monthsToRender < 0) return sections;
 
+    // currently it only support one year
     for (let i = 0; i <= monthsToRender; i++) {
-      sections.push(<CalendarSection key={i} showGuidelines={i === 0} />);
+      let props = {
+        key: i,
+        showGuidelines: i === 0,
+        month: moment()
+          .month(startDate.month() + i)
+          .format("MMMM"),
+        year: startDate.year()
+      };
+
+      sections.push(<CalendarSection {...props} />);
     }
 
     return sections;
