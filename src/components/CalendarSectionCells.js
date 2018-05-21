@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CalendarCell from "./CalendarCell.js";
 import "./CalendarSectionCells.css";
+import moment from "moment";
 
 /**
  * component that will handle the logic of behind the rendering of the cells properly.
@@ -8,46 +9,49 @@ import "./CalendarSectionCells.css";
  * @extends Component
  */
 class CalendarSectionCells extends Component {
+  _getCellBasicData(day, { year, month }) {
+    let weekdayIndex = moment([year, month, day]).weekday();
+    let isWeekend = weekdayIndex === 0 || weekdayIndex === 6;
+    return {
+      type: isWeekend ? "weekend" : "weekday",
+      number: day
+    };
+  }
+
+  _getCells({ offset, totalCells }) {
+    let cells = [];
+
+    for (let j = 0; j < offset; j++) {
+      cells.push(<CalendarCell key={`offset-${j}`} />);
+    }
+
+    for (let dayIndex = 0; dayIndex < totalCells; dayIndex++) {
+      let data = this._getCellBasicData(dayIndex + 1, this.props);
+      let props = {
+        key: dayIndex,
+        ...data
+      };
+
+      cells.push(<CalendarCell {...props} />);
+    }
+
+    return cells;
+  }
+
+  _getBoundaries({ year, month }) {
+    const targetMonth = moment([year, month]);
+    const offset = targetMonth.startOf("month").weekday();
+    const totalCells = targetMonth.daysInMonth();
+
+    return {
+      offset,
+      totalCells
+    };
+  }
+
   render() {
-    return (
-      <div className="calendar-section__cells">
-        <CalendarCell type="" />
-        <CalendarCell type="" />
-        <CalendarCell number="1" type="weekday" />
-        <CalendarCell number="2" type="weekday" />
-        <CalendarCell number="3" type="weekday" />
-        <CalendarCell number="4" type="weekday" />
-        <CalendarCell number="5" type="weekend" />
-        <CalendarCell number="6" type="weekend" />
-        <CalendarCell number="7" type="weekday" />
-        <CalendarCell number="8" type="weekday" />
-        <CalendarCell number="9" type="weekday" />
-        <CalendarCell number="10" type="weekday" />
-        <CalendarCell number="11" type="weekday" />
-        <CalendarCell number="12" type="weekend" />
-        <CalendarCell number="13" type="weekend" />
-        <CalendarCell number="14" type="weekday" />
-        <CalendarCell number="15" type="weekday" />
-        <CalendarCell number="16" type="weekday" />
-        <CalendarCell number="17" type="weekday" />
-        <CalendarCell number="18" type="weekday" />
-        <CalendarCell number="19" type="weekend" />
-        <CalendarCell number="20" type="weekend" />
-        <CalendarCell number="21" type="weekday" />
-        <CalendarCell number="22" type="weekday" />
-        <CalendarCell number="23" type="weekday" />
-        <CalendarCell number="24" type="weekday" />
-        <CalendarCell number="25" type="weekday" />
-        <CalendarCell number="26" type="weekend" />
-        <CalendarCell number="27" type="weekend" />
-        <CalendarCell number="28" type="weekday" />
-        <CalendarCell number="29" type="weekday" />
-        <CalendarCell number="30" type="weekday" />
-        <CalendarCell number="31" type="weekday" />
-        <CalendarCell type="" />
-        <CalendarCell type="" />
-      </div>
-    );
+    const cells = this._getCells(this._getBoundaries(this.props));
+    return <div className="calendar-section__cells">{cells}</div>;
   }
 }
 

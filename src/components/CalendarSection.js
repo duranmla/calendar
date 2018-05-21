@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./CalendarSection.css";
-import moment from "moment";
 import {
   CalendarSectionHeader,
   CalendarSectionColumnGuidelines,
@@ -15,15 +14,12 @@ import {
 class CalendarSection extends Component {
   render() {
     const { showGuidelines, month, year } = this.props;
-    const targetMonth = moment([year, month]);
-    const offset = targetMonth.startOf("month").weekday();
-    const totalCells = targetMonth.daysInMonth();
 
     return (
       <div className="calendar-section monthly">
         {showGuidelines ? <CalendarSectionColumnGuidelines /> : ""}
         <CalendarSectionHeader month={month} year={year} />
-        <CalendarSectionCells offset={offset} totalCells={totalCells} />
+        <CalendarSectionCells month={month} year={year} />
       </div>
     );
   }
