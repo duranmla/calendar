@@ -1,3 +1,4 @@
 import CalendarCell from "./CalendarCell";
+import CalendarBody from "./CalendarBody";
 
-export { CalendarCell };
+export { CalendarCell, CalendarBody };
