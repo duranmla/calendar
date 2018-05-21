@@ -12,7 +12,7 @@ class Calendar extends Component {
     return (
       <div className="calendar">
         <CalendarBody>
-          <CalendarSection />
+          <CalendarSection showGuidelines={true} />
         </CalendarBody>
       </div>
     );

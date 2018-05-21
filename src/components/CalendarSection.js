@@ -13,9 +13,11 @@ import {
  */
 class CalendarSection extends Component {
   render() {
+    const { showGuidelines } = this.props;
+
     return (
       <div className="calendar-section monthly">
-        <CalendarSectionColumnGuidelines />
+        {showGuidelines ? <CalendarSectionColumnGuidelines /> : ""}
         <CalendarSectionHeader />
         <CalendarSectionCells />
       </div>
