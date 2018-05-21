@@ -1,7 +1,6 @@
 .calendar-body {
   border: 5px solid brown;
   margin: 0 auto;
-  max-width: 100%;
-  width: 900px;
+  width: 700px;
   padding: 5px;
 }

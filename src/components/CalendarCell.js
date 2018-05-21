@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./CalendarCell.css";
+import classNames from "classnames";
 
 class CalendarCell extends Component {
   render() {
-    return <div className="calendar-cell">calendar cell</div>;
+    let className = classNames("calendar-cell", this.props.type);
+    return <div className={className}>{this.props.number}</div>;
   }
 }
 

@@ -14,7 +14,7 @@ import {
 class CalendarSection extends Component {
   render() {
     return (
-      <div className="calendar-section">
+      <div className="calendar-section monthly">
         <CalendarSectionColumnGuidelines />
         <CalendarSectionHeader />
         <CalendarSectionCells />

@@ -1,6 +1,5 @@
 .calendar-cell {
   background-color: beige;
-  border: 1px solid grey;
 }
 
 .calendar-cell.weekday {

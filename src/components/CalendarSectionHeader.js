@@ -8,7 +8,11 @@ import "./CalendarSectionHeader.css";
  */
 class CalendarSectionHeader extends Component {
   render() {
-    return <div className="calendar-section__header">header</div>;
+    return (
+      <div className="calendar-section__header">
+        <strong>May</strong>
+      </div>
+    );
   }
 }
 

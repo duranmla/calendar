@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Calendar.css";
-import { CalendarCell, CalendarBody, CalendarSection } from "./";
+import { CalendarBody, CalendarSection } from "./";
 
 /**
  * common parent that will serve as a unified place to distribute options to render the

@@ -1,4 +1,9 @@
 .calendar-section__cells {
   border: 1px solid blue;
   display: flex;
+  flex-wrap: wrap;
+}
+
+.monthly .calendar-section__cells .calendar-cell {
+  width: calc(100% / 7);
 }

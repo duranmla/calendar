@@ -1,3 +1,14 @@
 .calendar-section__column-guidelines {
   border: 1px solid pink;
+  display: flex;
+  justify-content: space-between;
+}
+
+.calendar-section__column-guidelines .day {
+  flex: 1;
+}
+
+.day {
+  border: 1px solid black;
+  text-align: center;
 }
