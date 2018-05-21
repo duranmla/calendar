@@ -1,0 +1,15 @@
+.calendar-cell {
+  background-color: grey;
+}
+
+.calendar-cell.weekday {
+  background-color: green;
+}
+
+.calendar-cell.weekend {
+  background-color: yellow;
+}
+
+.calendar-cell.holiday {
+  background-color: orange;
+}
