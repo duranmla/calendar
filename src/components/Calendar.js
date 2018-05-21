@@ -20,9 +20,7 @@ class Calendar extends Component {
       let props = {
         key: i,
         showGuidelines: i === 0,
-        month: moment()
-          .month(startDate.month() + i)
-          .format("MMMM"),
+        month: startDate.month() + i,
         year: startDate.year()
       };
 
