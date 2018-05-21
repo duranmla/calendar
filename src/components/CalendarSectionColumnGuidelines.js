@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 import "./CalendarSectionColumnGuidelines.css";
 
 /**
@@ -8,17 +9,18 @@ import "./CalendarSectionColumnGuidelines.css";
  * @extends Component
  */
 class CalendarSectionColumnGuidelines extends Component {
-  render() {
-    return (
-      <div className="calendar-section__column-guidelines">
-        <div className="day">S</div>
-        <div className="day">M</div>
-        <div className="day">T</div>
-        <div className="day">W</div>
-        <div className="day">T</div>
-        <div className="day">F</div>
-        <div className="day">S</div>
+  _getWeekdays() {
+    return moment.weekdays().map((day, i) => (
+      <div key={i} className="day">
+        {day.charAt(0)}
       </div>
+    ));
+  }
+  render() {
+    let weekdays = this._getWeekdays();
+
+    return (
+      <div className="calendar-section__column-guidelines">{weekdays}</div>
     );
   }
 }
