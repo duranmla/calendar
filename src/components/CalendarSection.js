@@ -13,13 +13,14 @@ import {
  */
 class CalendarSection extends Component {
   render() {
-    const { showGuidelines, month, year } = this.props;
+    const { showGuidelines, month, year, calendarRange } = this.props;
+    let passProps = { month, year };
 
     return (
       <div className="calendar-section monthly">
         {showGuidelines ? <CalendarSectionColumnGuidelines /> : ""}
-        <CalendarSectionHeader month={month} year={year} />
-        <CalendarSectionCells month={month} year={year} />
+        <CalendarSectionHeader {...passProps} />
+        <CalendarSectionCells {...passProps} calendarRange={calendarRange} />
       </div>
     );
   }

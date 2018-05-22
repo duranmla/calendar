@@ -20,6 +20,10 @@ class Calendar extends Component {
       let props = {
         key: i,
         showGuidelines: i === 0,
+        calendarRange: {
+          start: startDate,
+          end: endDate
+        },
         month: startDate.month() + i,
         year: startDate.year()
       };

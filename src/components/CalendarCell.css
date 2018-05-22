@@ -3,6 +3,10 @@
   padding: 7px 0;
 }
 
+.calendar-cell.out-boundaries {
+  opacity: 0.3;
+}
+
 .calendar-cell.weekday {
   background-color: green;
 }

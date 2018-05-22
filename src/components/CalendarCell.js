@@ -4,7 +4,10 @@ import classNames from "classnames";
 
 class CalendarCell extends Component {
   render() {
-    let className = classNames("calendar-cell", this.props.type);
+    const { type, outOfbounderies } = this.props;
+    let className = classNames("calendar-cell", type, {
+      "out-boundaries": outOfbounderies
+    });
     return <div className={className}>{this.props.number}</div>;
   }
 }

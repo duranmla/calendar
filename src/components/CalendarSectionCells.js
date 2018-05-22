@@ -18,6 +18,22 @@ class CalendarSectionCells extends Component {
     };
   }
 
+  _verifyDayWithinRange(iterationDay, { calendarRange, month, year }) {
+    let { start, end } = calendarRange;
+    let iterationMonth = month;
+    let iterationYear = year;
+
+    if (iterationYear === start.year() && iterationMonth === start.month()) {
+      return iterationDay < start.date();
+    }
+
+    if (iterationYear === end.year() && iterationMonth === end.month()) {
+      return iterationDay > end.date();
+    }
+
+    return false;
+  }
+
   _getCells({ offset, totalCells }) {
     let cells = [];
 
@@ -29,6 +45,7 @@ class CalendarSectionCells extends Component {
       let data = this._getCellBasicData(dayIndex + 1, this.props);
       let props = {
         key: dayIndex,
+        outOfbounderies: this._verifyDayWithinRange(dayIndex + 1, this.props),
         ...data
       };
 
