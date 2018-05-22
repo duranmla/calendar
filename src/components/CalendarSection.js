@@ -13,8 +13,8 @@ import {
  */
 class CalendarSection extends Component {
   render() {
-    const { showGuidelines, month, year, calendarRange } = this.props;
-    let passProps = { month, year };
+    const { showGuidelines, month, year, calendarRange, holidays } = this.props;
+    let passProps = { month, year, holidays };
 
     return (
       <div className="calendar-section monthly">
