@@ -15,7 +15,12 @@ class Calendar extends Component {
 
     if (monthsToRender < 0) return sections;
 
-    // currently it only support one year
+    let iterableDate = moment([
+      startDate.year(),
+      startDate.month(),
+      startDate.date()
+    ]);
+
     for (let i = 0; i <= monthsToRender; i++) {
       let props = {
         key: i,
@@ -24,19 +29,22 @@ class Calendar extends Component {
           start: startDate,
           end: endDate
         },
-        month: startDate.month() + i,
-        year: startDate.year()
+        month: iterableDate.month(),
+        year: iterableDate.year()
       };
 
       sections.push(<CalendarSection {...props} />);
+
+      // iterate over the months
+      iterableDate.add(1, "months");
     }
 
     return sections;
   }
 
   render() {
-    let startDate = moment([2018, 4, 10]); // ~ May 10, 2018
-    let endDate = moment([2018, 6, 20]); // ~ July 20, 2018
+    let startDate = moment([2018, 9, 2]);
+    let endDate = moment([2019, 7, 7]);
     let sections = this._getSections({ startDate, endDate });
 
     return (
