@@ -14,7 +14,7 @@ class Calendar extends Component {
     return [];
   }
 
-  _getSections({ startDate, endDate }) {
+  _getSections({ startDate, endDate }, countryCode) {
     let sections = [];
     let monthsToRender = endDate.diff(startDate, "months");
 
@@ -34,6 +34,7 @@ class Calendar extends Component {
           start: startDate,
           end: endDate
         },
+        countryCode,
         month: iterableDate.month(),
         year: iterableDate.year()
       };
@@ -48,9 +49,10 @@ class Calendar extends Component {
   }
 
   render() {
-    let startDate = moment([2018, 0, 1]);
-    let endDate = moment([2019, 0, 10]);
-    let sections = this._getSections({ startDate, endDate });
+    let startDate = moment([2016, 0, 1]);
+    let endDate = moment([2017, 0, 10]);
+    let countryCode = "VE";
+    let sections = this._getSections({ startDate, endDate }, countryCode);
 
     return (
       <div className="calendar">

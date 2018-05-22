@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CalendarCell from "./CalendarCell.js";
 import "./CalendarSectionCells.css";
 import moment from "moment";
+import { filterHolidaysByDate } from "../helpers/utils";
 
 /**
  * component that will handle the logic of behind the rendering of the cells properly.
@@ -33,7 +34,12 @@ class CalendarSectionCells extends Component {
     return out;
   }
 
+  _findHolidayByDate(day, { month, year }, holidays) {
+    return filterHolidaysByDate({ day, month, year }, holidays);
+  }
+
   _getCells({ offset, totalCells }) {
+    const { holidays } = this.props;
     let cells = [];
     // a day has maximum of 31 days, 4 weeks and 3 days remaing that can be distributed within a different week (~5 weeks)
     let maxCellsEntries = 7 * 5;
@@ -51,6 +57,7 @@ class CalendarSectionCells extends Component {
       let props = {
         key: dayIndex,
         outOfbounderies: this._isOutBoundaries(dayIndex + 1, this.props),
+        isHoliday: this._findHolidayByDate(dayIndex + 1, this.props, holidays),
         ...data
       };
 

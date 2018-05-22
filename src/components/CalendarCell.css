@@ -15,6 +15,6 @@
   background-color: yellow;
 }
 
-.calendar-cell.holiday {
-  background-color: orange;
+.calendar-cell.is-holiday {
+  background-color: orange !important;
 }
