@@ -36,11 +36,17 @@ class CalendarSectionCells extends Component {
 
   _getCells({ offset, totalCells }) {
     let cells = [];
+    // a day has maximum of 31 days, 4 weeks and 3 days remaing that can be distributed within a different week (~5 weeks)
+    let maxCellsEntries = 7 * 5;
+    let remainingCells = maxCellsEntries - totalCells - offset;
+    let i;
 
-    for (let j = 0; j < offset; j++) {
-      cells.push(<CalendarCell key={`offset-${j}`} />);
+    // full-fill with empty cells
+    for (i = 0; i < offset; i++) {
+      cells.push(<CalendarCell key={`offset-${i}`} />);
     }
 
+    // render actual month cells that represent days
     for (let dayIndex = 0; dayIndex < totalCells; dayIndex++) {
       let data = this._getCellBasicData(dayIndex + 1, this.props);
       let props = {
@@ -50,6 +56,11 @@ class CalendarSectionCells extends Component {
       };
 
       cells.push(<CalendarCell {...props} />);
+    }
+
+    // full-fill with empty cells
+    for (i = 0; i < remainingCells; i++) {
+      cells.push(<CalendarCell key={`after-${i}`} />);
     }
 
     return cells;
