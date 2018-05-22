@@ -49,7 +49,7 @@ class Calendar extends Component {
 
   render() {
     let startDate = moment([2018, 0, 1]);
-    let endDate = moment([2017, 0, 10]);
+    let endDate = moment([2019, 0, 10]);
     let sections = this._getSections({ startDate, endDate });
 
     return (
