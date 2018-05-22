@@ -18,20 +18,19 @@ class CalendarSectionCells extends Component {
     };
   }
 
-  _verifyDayWithinRange(iterationDay, { calendarRange, month, year }) {
+  _isOutBoundaries(day, { calendarRange, month, year }) {
     let { start, end } = calendarRange;
-    let iterationMonth = month;
-    let iterationYear = year;
+    let out = false;
 
-    if (iterationYear === start.year() && iterationMonth === start.month()) {
-      return iterationDay < start.date();
+    if (year === start.year() && month === start.month()) {
+      out = day < start.date();
     }
 
-    if (iterationYear === end.year() && iterationMonth === end.month()) {
-      return iterationDay > end.date();
+    if (!out && year === end.year() && month === end.month()) {
+      out = day > end.date();
     }
 
-    return false;
+    return out;
   }
 
   _getCells({ offset, totalCells }) {
@@ -51,7 +50,7 @@ class CalendarSectionCells extends Component {
       let data = this._getCellBasicData(dayIndex + 1, this.props);
       let props = {
         key: dayIndex,
-        outOfbounderies: this._verifyDayWithinRange(dayIndex + 1, this.props),
+        outOfbounderies: this._isOutBoundaries(dayIndex + 1, this.props),
         ...data
       };
 
