@@ -26,11 +26,19 @@ class CalendarSection extends Component {
     return await getHolidaysByDate({ month: monthIndex, year }, countryCode);
   }
 
-  componentWillMount() {
-    const { countryCode } = this.props;
-    this._getSectionHolidays(this.props, countryCode).then(r =>
-      this.setState({ holidays: r.data.holidays })
+  _updateSectionHolidays(props) {
+    const { countryCode } = props;
+    this._getSectionHolidays(props, countryCode).then(r =>
+      this.setState({ holidays: r.data ? r.data.holidays : [] })
     );
+  }
+
+  componentWillMount() {
+    this._updateSectionHolidays(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this._updateSectionHolidays(nextProps);
   }
 
   render() {
