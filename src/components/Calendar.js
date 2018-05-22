@@ -9,11 +9,16 @@ import moment from "moment";
  * @extends Component
  */
 class Calendar extends Component {
+  _alertInvalidRange() {
+    alert("The given range is invalid");
+    return [];
+  }
+
   _getSections({ startDate, endDate }) {
     let sections = [];
     let monthsToRender = endDate.diff(startDate, "months");
 
-    if (monthsToRender < 0) return sections;
+    if (monthsToRender < 0) return this._alertInvalidRange();
 
     let iterableDate = moment([
       startDate.year(),
@@ -43,8 +48,8 @@ class Calendar extends Component {
   }
 
   render() {
-    let startDate = moment([2018, 9, 2]);
-    let endDate = moment([2019, 7, 7]);
+    let startDate = moment([2018, 0, 1]);
+    let endDate = moment([2017, 0, 10]);
     let sections = this._getSections({ startDate, endDate });
 
     return (
